@@ -1,0 +1,30 @@
+---
+title: "PSet 3"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+# this prevents package loading message from appearing in the rendered version of your problem set
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+```{r, install and import the required library}
+if(!require('r2d3')) install.packages('r2d3')
+library('r2d3')
+```
+
+```{r}
+bars <- c(10, 20, 30)
+```
+
+```{d3 data=bars, options=list(color = 'orange')}
+svg.selectAll('rect')
+  .data(data)
+  .enter()
+    .append('rect')
+      .attr('width', function(d) { return d * 10; })
+      .attr('height', '20px')
+      .attr('y', function(d, i) { return i * 22; })
+      .attr('fill', options.color);
+```
